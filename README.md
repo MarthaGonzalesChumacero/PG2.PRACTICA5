@@ -192,4 +192,9 @@ def validate_ingredientes(self, value):
 
 ### http://127.0.0.1:8000/admin/pedidos_cafe/pedidocafe/add/
 
+![Admin](Imagenes/admin.png)
+
+____
+
 ### http://127.0.0.1:8000/api/pedidos_cafe/
+![Api](Imagenes/api.png)
