@@ -49,7 +49,7 @@ Este proyecto es una API hecha con Django y Django REST Framework que sirve para
 Se utilizo este patron Factory para encapsular la creacion de distintas bases de cafe (Americano,Expresso, Latte).
 El codigo esta implementado en el archivo `pedidos_cafe/factory.py`.
 
-    ```python
+```python
 from pedidos_cafe.base import Espresso, Americano, Latte
 class CafeFactory:
     @staticmethod
@@ -66,7 +66,7 @@ class CafeFactory:
         cafe.inicializar()
         return cafe
 El uso del patron se evidencia en serializers.py
-    ```
+```
 ## 2. Builder
 
 Se utilizo este patron Builder ya que es el encargado de construir el pedido personalizado, separando el proceso de armado del café de su presentación final. Ideal para mantener una arquitectura limpia y flexible.
@@ -160,7 +160,7 @@ class Logger:
 Se realizó la implementacion para `admin y API`, asegurandonos que los ingredientes seleccionados sean válidos.
 
 Validacion de ingredientes dentro de `pedidos_cafe/models.py dsede el panel de administracion Django`.
-
+````python
 def clean(self):
     validos = {"leche", "azúcar", "canela", "chocolate", "vainilla", "caramelo", "miel"}
     if not isinstance(self.ingredientes, list):
@@ -168,9 +168,9 @@ def clean(self):
     for ing in self.ingredientes:
         if ing not in validos:
             raise ValidationError({"ingredientes": f"ingrediente inválido: {ing}"})
-
+````
 Validación de ingredientes dentro de `pedidos_cafe/serializers.py`
-
+````python
 def validate_ingredientes(self, value):
     ingredientes_validos = {
         "leche", "azúcar", "canela", "chocolate", "vainilla", "caramelo", "miel"
@@ -187,9 +187,9 @@ def validate_ingredientes(self, value):
         raise serializers.ValidationError(errores)
     
     return value
-
+````
 ### 7. PROBANDO
 
-### IMAGEN http://127.0.0.1:8000/admin/pedidos_cafe/pedidocafe/add/
+### http://127.0.0.1:8000/admin/pedidos_cafe/pedidocafe/add/
 
-### IMAGEN http://127.0.0.1:8000/api/pedidos_cafe/
+### http://127.0.0.1:8000/api/pedidos_cafe/
